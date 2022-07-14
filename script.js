@@ -9,9 +9,7 @@ function computerPlay() {
     return randChoice;
 }
 
-const playerChoice = prompt("Choose Between Rock, Paper and Scissors.");
-const strPlayer = playerChoice.toLowerCase();
-const computerChoice = computerPlay();
+
 let scorePlayer = 0;
 let scoreComputer = 0;
 
@@ -28,19 +26,16 @@ function playRound(strPlayer, computerChoice) {
         return "Scissors against Scissors, It's a Tie!"
     }
     if (strPlayer === "scissors" && computerChoice === "paper") {
-        scorePlayer++;
         return "Scissors against Paper, Player won!"
     }
     if (strPlayer === "paper" && computerChoice === "scissors") {
-        scoreComputer++;
+
         return "Paper against Scissors, Computer won!"
     }
     if (strPlayer === "rock" && computerChoice === "paper") {
-        scoreComputer++;
         return "Rock against Paper, Computer won!"
     }
     if (strPlayer === "paper" && computerChoice === "rock") {
-        scorePlayer++;
         return "Paper against Rock, Player won!"
     }
     if (strPlayer === "scissors" && computerChoice === "rock") {
@@ -48,13 +43,12 @@ function playRound(strPlayer, computerChoice) {
         return "Scissors against Rock, Computer won!"
     }
     if (strPlayer === "rock" && computerChoice === "scissors") {
-        scorePlayer++;
         return "Rock against Scissors, Player won!"
     }
 
 
 }
-
+/*
 function game() {
     
     for (let i = 0; i < 5; i++) {
@@ -66,5 +60,41 @@ function game() {
 
     }
 }
+*/
 
-console.log(game());
+function game(){
+
+    for (let i = 0; i < 1000; i++) {
+
+        const playerChoice = prompt("Choose Between Rock, Paper and Scissors.");
+        const strPlayer = playerChoice.toLowerCase();
+        const computerChoice = computerPlay();
+        let outcome = playRound(strPlayer,computerChoice)
+        console.log(outcome)
+       if (outcome.indexOf('win') > -1) {   
+        scorePlayer++
+        console.log(`Score - Player : ${scorePlayer}\
+        Computer : ${scoreComputer}`);
+        }
+        else if (outcome.indexOf('Draw') > -1){
+        draws++;
+        }
+        else {
+            scoreComputer++
+            console.log(`Score - Player : ${scorePlayer}\
+        Computer : ${scoreComputer}`);
+        }
+        if (scorePlayer === 5) {
+            console.log("Congrats! You win!");
+            break;
+        }
+        if (scoreComputer === 5) {
+            console.log("You lost, better luck next time!");
+            break;
+        }
+        
+    }
+}
+
+game();
+
