@@ -10,12 +10,16 @@ function computerPlay() {
 }
 
 
+
+const computerChoice = computerPlay();
 let scorePlayer = 0;
 let scoreComputer = 0;
 
 
 
-function playRound(strPlayer, computerChoice) {
+function playRound(computerChoice) {
+    const playerChoice = prompt("Choose Between Rock, Paper and Scissors.");
+    const strPlayer = playerChoice.toLowerCase();
     if (strPlayer === "rock" && computerChoice === "rock") {
         return "Rock against Rock, It's a Tie!"
     }
@@ -66,10 +70,7 @@ function game(){
 
     for (let i = 0; i < 1000; i++) {
 
-        const playerChoice = prompt("Choose Between Rock, Paper and Scissors.");
-        const strPlayer = playerChoice.toLowerCase();
-        const computerChoice = computerPlay();
-        let outcome = playRound(strPlayer,computerChoice)
+        let outcome = playRound(computerChoice)
         console.log(outcome)
        if (outcome.indexOf('win') > -1) {   
         scorePlayer++
