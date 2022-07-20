@@ -2,55 +2,103 @@
 
 const options = document.querySelectorAll('.options');
 
+let pScore = 0;
+let cScore = 0;
+
 
 options.forEach((option) => {
-    option.addEventListener("click", function () {
-        const pInput = this.textContent;
-        const cOptions = ["Rock", "Paper", "Scissors"];
-        const cInput = cOptions[Math.floor(Math.random() * 3)];
+  option.addEventListener("click", function () {
+    const pInput = this.textContent;
+    const cOptions = ["Rock", "Paper", "Scissors"];
+    const cInput = cOptions[Math.floor(Math.random() * 3)];
 
-        decideWinner(pInput, cInput);
+    decideWinner(pInput, cInput);
+    updateScore();
+    checkWinner();
 
-    });
+  });
 });
 
 
 
 function decideWinner(pInput, cInput) {
-    const currentMatch = `${pInput} vs ${cInput}`;
+  const currentMatch = `${pInput} vs ${cInput}`;
 
-    // Tie check
-    if (pInput === cInput) {
-      alert(`${currentMatch} is a Tie`);
-      return;
-    }
-  
-    // Rock
-    if (pInput === "Rock") {
-      if (cInput === "Scissors") {
-        alert(`${currentMatch} = You Win`);
-      } else {
-        alert(`${currentMatch} = Computer Wins`);
-      }
-    }
-    // Paper
-    else if (pInput === "Paper") {
-      if (cInput === "Rock") {
-        alert(`${currentMatch} = You Win`);
-      } else {
-        alert(`${currentMatch} = Computer Wins`);
-      }
-    }
-    // Scissors
-    else {
-      if (cInput === "Paper") {
-        alert(`${currentMatch} = You Win`);
-      } else {
-        alert(`${currentMatch} = Computer Wins`);
-      }
-    }
+  // Tie check
+  if (pInput === cInput) {
+    alert(`${currentMatch} is a Tie`);
+    return;
   }
 
+  // Rock
+  if (pInput === "Rock") {
+    if (cInput === "Scissors") {
+      alert(`${currentMatch} = You Win`);
+      pScore++;
+    } else {
+      alert(`${currentMatch} = Computer Wins`);
+      cScore++;
+    }
+  }
+  // Paper
+  else if (pInput === "Paper") {
+    if (cInput === "Rock") {
+      alert(`${currentMatch} = You Win`);
+      pScore++;
+    } else {
+      alert(`${currentMatch} = Computer Wins`);
+      cScore++;
+    }
+  }
+  // Scissors
+  else {
+    if (cInput === "Paper") {
+      alert(`${currentMatch} = You Win`);
+      pScore++;
+    } else {
+      alert(`${currentMatch} = Computer Wins`);
+      cScore++;
+    }
+  }
+}
+
+function updateScore() {
+  const player = document.querySelector('#pscore');
+  const computer = document.querySelector('#cscore');
+
+  player.textContent = pScore;
+  computer.textContent = cScore;
+
+}
+
+
+function checkWinner() {
+  const container = document.querySelector('#container');
+  if (pScore === 3) {
+    const playerContent = document.createElement("div")
+    playerContent.classList.add('playerContent');
+    playerContent.textContent = "Congratulations, you won!!!";
+    container.appendChild(playerContent);
+    return true;
+  }
+  if (cScore === 3) {
+    const computerContent = document.createElement("div")
+    computerContent.classList.add('computerContent');
+    computerContent.textContent = "oh, you lost. Next time better.";
+    container.appendChild(computerContent);
+    return true;
+  }
+  return false;
+
+}
+
+
+function resetGame() {
+  pScore = 0;
+  cScore = 0;
+
+  
+}
 
 
 
