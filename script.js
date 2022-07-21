@@ -1,6 +1,7 @@
 // Rock paper scissors javascript TOP
 
 const options = document.querySelectorAll('.options');
+const reset = document.querySelectorAll('.reset');
 
 let pScore = 0;
 let cScore = 0;
@@ -18,6 +19,8 @@ options.forEach((option) => {
 
   });
 });
+
+
 
 
 
@@ -62,6 +65,7 @@ function decideWinner(pInput, cInput) {
   }
 }
 
+
 function updateScore() {
   const player = document.querySelector('#pscore');
   const computer = document.querySelector('#cscore');
@@ -79,25 +83,46 @@ function checkWinner() {
     playerContent.classList.add('playerContent');
     playerContent.textContent = "Congratulations, you won!!!";
     container.appendChild(playerContent);
+    resetGame();
     return true;
   }
   if (cScore === 3) {
     const computerContent = document.createElement("div")
     computerContent.classList.add('computerContent');
-    computerContent.textContent = "oh, you lost. Next time better.";
+    computerContent.textContent = "oh, you lost. Better luck next time.";
     container.appendChild(computerContent);
+    resetGame();
     return true;
   }
   return false;
 
 }
+function updateGame(){
+  const playerDiv = document.querySelector('.playerContent');
+  const computerDiv = document.querySelector('.computerContent');
 
+  playerDiv.classList.remove('div');
+  computerDiv.classList.remove('div');
+
+
+
+
+
+
+
+
+
+}
 
 function resetGame() {
   pScore = 0;
   cScore = 0;
 
-  
+  updateScore();
+  updateGame();
+
+
+
 }
 
 

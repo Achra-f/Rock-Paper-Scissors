@@ -1,0 +1,77 @@
+body{
+    background-color: azure;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 80px;
+}
+
+h2{
+    font-size: 60px;
+}
+
+button{
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border: 5px solid;
+    background-color: aquamarine;
+}
+
+p{
+    font-size: 25px;
+}
+
+#score{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    font-size: 30px;
+    padding: 10px;
+}
+
+#pscore{
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#cscore{
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.diplayC{
+    font-size: 30px;
+    padding: 50px;
+    border: 5px solid;
+    background-color: aquamarine;
+}
+
+.displayP{
+    font-size: 30px;
+    padding: 50px;
+    border: 5px solid;
+    background-color: aquamarine;
+
+}
+
+.result{
+    font-size: 30px;
+    padding-top: 250px;
+ 
+    padding-right: 500px;
+    border: 5px solid;
+    background-color: aquamarine;
+}
