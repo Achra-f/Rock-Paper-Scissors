@@ -1,7 +1,6 @@
 // Rock paper scissors javascript TOP
 
 const options = document.querySelectorAll('.options');
-const reset = document.querySelectorAll('.reset');
 
 let pScore = 0;
 let cScore = 0;
@@ -13,12 +12,17 @@ options.forEach((option) => {
     const cOptions = ["Rock", "Paper", "Scissors"];
     const cInput = cOptions[Math.floor(Math.random() * 3)];
 
+
     decideWinner(pInput, cInput);
     updateScore();
     checkWinner();
 
+
   });
 });
+
+
+
 
 
 
@@ -67,8 +71,9 @@ function decideWinner(pInput, cInput) {
 
 
 function updateScore() {
-  const player = document.querySelector('#pscore');
-  const computer = document.querySelector('#cscore');
+  const player = document.querySelector('.playerContent');
+  const computer = document.querySelector('.computerContent');
+
 
   player.textContent = pScore;
   computer.textContent = cScore;
@@ -77,18 +82,18 @@ function updateScore() {
 
 
 function checkWinner() {
-  const container = document.querySelector('#container');
+  const container = document.querySelector('.result');
   if (pScore === 3) {
-    const playerContent = document.createElement("div")
-    playerContent.classList.add('playerContent');
+    const playerContent = document.createElement("p")
+    playerContent.classList.add('end');
     playerContent.textContent = "Congratulations, you won!!!";
     container.appendChild(playerContent);
     resetGame();
     return true;
   }
   if (cScore === 3) {
-    const computerContent = document.createElement("div")
-    computerContent.classList.add('computerContent');
+    const computerContent = document.createElement("p")
+    computerContent.classList.add('end');
     computerContent.textContent = "oh, you lost. Better luck next time.";
     container.appendChild(computerContent);
     resetGame();
@@ -97,17 +102,13 @@ function checkWinner() {
   return false;
 
 }
-function updateGame(){
+function updateGame() {
   const playerDiv = document.querySelector('.playerContent');
   const computerDiv = document.querySelector('.computerContent');
 
+
   playerDiv.classList.remove('div');
   computerDiv.classList.remove('div');
-
-
-
-
-
 
 
 
